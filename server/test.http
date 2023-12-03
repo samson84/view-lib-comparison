@@ -1,0 +1,35 @@
+
+@url = http://localhost:4400
+
+GET {{url}}/api/todos
+
+###
+
+@idToGet = mP1RgTUgJi
+GET {{url}}/api/todos/{{idToGet}}
+
+###
+
+POST {{url}}/api/todos
+Content-Type: application/json
+
+{
+  "title": "Go to sleep",
+  "done": true
+}
+
+###
+
+@idToUpdate = ddd
+
+PATCH {{url}}/api/todos/{{idToUpdate}}
+Content-Type: application/json
+
+{
+  "title": "Put the dishes into the dishwasher"
+}
+
+### 
+
+@idToDelete = 0izEBf3oA9
+DELETE {{url}}/api/todos/{{idToDelete}}
