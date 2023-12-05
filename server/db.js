@@ -21,7 +21,7 @@ export const createDb = (initialValue) => {
       ...item,
       id: uid.rnd()
     }
-    data.push(item)
+    data.push(toSave)
     return structuredClone(toSave)
   }
 
