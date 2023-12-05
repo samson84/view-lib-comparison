@@ -8,15 +8,8 @@ export type Todo = {
   done: boolean
 }
 
-type UpdateTodo = Partial<Omit<Todo, 'id'>>
-export const updateTodo = async (id: string, updates: UpdateTodo) => {
-  return await fetcher<UpdateTodo, Todo>({
-    url: `${BASE_URL}/${id}`,
-    method: 'PATCH',
-    body: updates
-  })
-}
-
+export type UpdateTodo = Partial<Omit<Todo, 'id'>>
+export type CreateTodo = Omit<Todo, 'id'>
 
 export const useTodo = () => {
   const { data, error, loading, mutate } = useFetch<Todo[]>({ url: BASE_URL })
@@ -32,22 +25,20 @@ export const useTodo = () => {
     )
   }
 
-  return { todos: data, error, loading, update }
-}
+  const create = async (todo: CreateTodo) => {
+    return await mutate<CreateTodo, Todo>({
+      url: BASE_URL,
+      method: 'POST',
+      body: todo
+    }, (created, todos) => todos === null ? [created] : [...todos, created])  
+  }
 
-type CreateTodo = Omit<Todo, 'id'>
-export const createTodo = async (todo: CreateTodo) => {
-  return await fetcher<CreateTodo, Todo>({
-    url: BASE_URL,
-    method: 'POST',
-    body: todo
-  })
-}
+  const remove = async (id: string) => {
+    return await mutate<undefined, Todo>({
+      url: `${BASE_URL}/${id}`,
+      method: 'DELETE',
+    }, (deleted, todos) => todos?.filter((todo) => todo.id !== deleted.id) ?? null)
+  }
 
-
-export const deleteTodo = async (id: string) => {
-  return await fetcher<undefined, Todo>({
-    url: `${BASE_URL}/${id}`,
-    method: 'DELETE',
-  })
+  return { todos: data, error, loading, update, create, remove }
 }

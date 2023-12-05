@@ -16,7 +16,7 @@ export const fetcher = async <Req extends {} | undefined, Res>(
     }
   })
   if (!response.ok) {
-    throw new Error(`Unsuccessful request (${response.status} ${response.text}).`)
+    throw new Error(`Unsuccessful request (${response.status} ${response.statusText}).`)
   }
   const contentType = response.headers.get('content-type')
   if (!contentType?.includes('application/json')) {

@@ -1,13 +1,21 @@
 import Error from "./components/Error"
 import Loading from "./components/Loading"
 import Todos from "./components/Todos"
-import { Todo, useTodo } from "./todo-api"
+import { CreateTodo, Todo, useTodo } from "./todo-api"
 
 function App() {
-  const { todos, error, loading, update } = useTodo()
+  const { todos, error, loading, update, remove, create } = useTodo()
 
   const handleUpdate = async (id: string, updates: Partial<Todo>) => {
     await update(id, updates)
+  }
+
+  const handleCreate = async (todo: CreateTodo) => {
+    await create(todo)
+  }
+
+  const handleDelete = async (id: string) => {
+    await remove(id)
   }
 
   return (
@@ -20,9 +28,16 @@ function App() {
           <h1 className="m-0">TODO App</h1>
           <p>with React Client</p>
         </div>
-        <div className="flex">
+        <div className="">
           {error && <Error message={error.message} />}
-          {todos && <Todos todos={todos} onUpdate={handleUpdate} />}
+          {todos && (
+            <Todos
+              todos={todos}
+              onUpdate={handleUpdate}
+              onAdd={handleCreate} 
+              onDelete={handleDelete}
+            />
+          )}
         </div>
       </div>
     </>
