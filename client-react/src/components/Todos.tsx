@@ -24,6 +24,9 @@ export default function Todos({
 
   const handleAdd = (event: SyntheticEvent) => {
     event.preventDefault()
+    if(title === "") {
+      return
+    }
     setTitle("")
     onAdd({
       title,
