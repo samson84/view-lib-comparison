@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [svelte()],
   server: {
     proxy: { 
-      '/api': 'http://localshot:4400'
+      '/api': 'http://localhost:4400'
     }
   }
 })
