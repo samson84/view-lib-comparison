@@ -25,6 +25,6 @@
 </form>
 <ul>
   {#each todos as todo}
-    <TodoItem {todo} on:update />
+    <TodoItem {todo} on:update on:delete />
   {/each}
 </ul>

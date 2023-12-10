@@ -85,6 +85,21 @@ const createTodos = () => {
       } finally {
         setLoading(false)
       }
+    },
+    async delete(id: string) {
+      try {
+        setLoading(true)
+        const deleted = await fetcher<undefined, Todo>({
+          url: `${BASE_URL}/${id}`,
+          method: 'DELETE'
+        })
+        setError(null)
+        update((items) => items.filter(item => item.id !== deleted.id))
+      } catch (error) {
+        ifError(error, (e) => setError(e))
+      } finally {
+        setLoading(false)
+      }
     }
   }
 }

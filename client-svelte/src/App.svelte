@@ -16,6 +16,11 @@
     const todo = event.detail
     await todos.create(todo)
   }
+
+  const handleDelete = async (event: CustomEvent<string>) => {
+    const id = event.detail
+    await todos.delete(id)
+  }
 </script>
 
 <main>
@@ -30,6 +35,7 @@
       todos={$todos}
       on:update={handleUpdate}
       on:create={handleCreate}
+      on:delete={handleDelete}
     />
   {/if}
 </main>

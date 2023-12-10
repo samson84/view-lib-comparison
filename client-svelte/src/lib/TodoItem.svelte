@@ -7,7 +7,10 @@
   let editing = false;
   let title = "";
 
-  const dispatch = createEventDispatcher<{ update: [string, UpdateTodo] }>();
+  const dispatch = createEventDispatcher<{ 
+    update: [string, UpdateTodo],
+    delete: string
+  }>();
 
   const handleToggle = (todo: Todo) => {
     dispatch("update", [todo.id, { done: !todo.done }]);
@@ -16,6 +19,10 @@
   const handleSave = () => {
     dispatch("update", [todo.id, { title }]);
   };
+
+  const handleDelete = () => {
+    dispatch("delete", todo.id)
+  }
 </script>
 
 <li>
@@ -42,6 +49,9 @@
       }}
     >
       {todo.title}
+    </button>
+    <button on:click={handleDelete}>
+      Delete
     </button>
   {/if}
 </li>
