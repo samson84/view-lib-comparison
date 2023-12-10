@@ -1,10 +1,16 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { todos, loading, error } from "./lib/todo.store.js";
+  import { todos, loading, error, type UpdateTodo } from "./lib/todo.store.js";
+  import TodoList from "./lib/TodoList.svelte";
 
   onMount(async () => {
-    await todos.getTodos()
+    await todos.readAll();
   });
+
+  const handleUpdate = async (event: CustomEvent<[string, UpdateTodo]>) => {
+    const [id, updates] = event.detail
+    await todos.update(id, updates)
+  };
 </script>
 
 <main>
@@ -13,13 +19,9 @@
   {#if $loading}
     Loading
   {:else if $error}
-    Ooops, something went wrong. 
+    Ooops, something went wrong.
   {:else}
-  <ul>
-    {#each $todos as todo}
-      <li>{todo.title}</li>
-    {/each}
-  </ul>
+    <TodoList todos={$todos} on:update={handleUpdate} />
   {/if}
 </main>
 
