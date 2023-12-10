@@ -2,7 +2,7 @@
 </script>
 
 <main>
-  <h1>Hello world</h1>
+  <div class="btn">Hello world</div>
 </main>
 
 <style>
