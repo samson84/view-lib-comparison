@@ -15,16 +15,23 @@
   };
 </script>
 
-<form on:submit|preventDefault={handleCreate}>
-  <input
-    type="text"
-    placeholder="Type the Todo title here"
-    bind:value={title}
-  />
-  <button type="submit">Add new Todo</button>
-</form>
-<ul>
-  {#each todos as todo}
-    <TodoItem {todo} on:update on:delete />
-  {/each}
-</ul>
+<div class="flex flex-col gap-3">
+  <form
+    class="flex gap-2 flex-col sm:flex-row" 
+    on:submit|preventDefault={handleCreate}
+  >
+    <input
+      class="input input-bordered"
+      type="text"
+      placeholder="Type the Todo title here"
+      required
+      bind:value={title}
+    />
+    <button type="submit" class="btn">Add new Todo</button>
+  </form>
+  <ul>
+    {#each todos as todo}
+      <TodoItem {todo} on:update on:delete />
+    {/each}
+  </ul>
+</div>
