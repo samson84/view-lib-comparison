@@ -29,7 +29,7 @@
   };
 </script>
 
-<div class="container m-3 text-lg">
+<div class="container m-0 sm:m-3 text-lg">
   {#if $loading}
     <div class="fixed top-0 right-0 loading loading-dots loading-lg"></div>
   {/if}
