@@ -5,7 +5,10 @@
 ### Typescript
 
 - Typescript support has [limitations](https://svelte.dev/docs/typescript#limitations)
+
 - With typescript it is easier to learn a new framework. It notifies you in advance a lot of syntax error.
+
+- It is easy and very descriptive to add types to the custom events.
 
 ### Debugging, editing
 
@@ -22,6 +25,10 @@
 - The custom stores are great feature to handle the async operations separated from the display logic.
 
 - I loved the eventmodifiers. `<form on:submit|preventDefault={...}>` it removes a lot of boilerplate.
+
+- The template engine is straightforward, it is great that I can write simple html code to describe the component. It is more close to what will be displayed exactly than React (JS + JSX).
+
+- To reduce the boilerplates, Svelte introduce a lot of shorthands, like event forwarding and automatic store subscribtions, unsubscribtions (like `$store`). It feels criptic in some cases and hides important mechanics. 
 
 ### Testing
 
