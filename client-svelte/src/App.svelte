@@ -8,7 +8,7 @@
     type CreateTodo,
   } from "./lib/todo.store.js";
   import TodoList from "./lib/TodoList.svelte";
-  import ErrorMessage from "./Error.svelte";
+  import ErrorMessage from "./lib/Error.svelte";
   import Loading from "./Loading.svelte";
 
   onMount(async () => {
