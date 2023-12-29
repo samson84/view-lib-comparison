@@ -8,6 +8,8 @@
     type CreateTodo,
   } from "./lib/todo.store.js";
   import TodoList from "./lib/TodoList.svelte";
+  import ErrorMessage from "./Error.svelte";
+  import Loading from "./Loading.svelte";
 
   onMount(async () => {
     await todos.readAll();
@@ -31,7 +33,9 @@
 
 <div class="container m-0 sm:m-3 text-lg">
   {#if $loading}
-    <div class="fixed top-0 right-0 loading loading-dots loading-lg"></div>
+    <div class="fixed top-0 right-0">
+      <Loading />
+    </div>
   {/if}
   <main class="flex justify-center">
     <div class="flex flex-col gap-2">
@@ -40,7 +44,7 @@
         <h2 class="text-xl text-zinc-500 font-bold mt-0 mb-2">with Svelte</h2>
       </div>
       {#if $error}
-        Ooops, something went wrong.
+        <ErrorMessage message={$error.message} />
       {/if}
       {#if $todos && !$error}
         <div>

@@ -16,6 +16,8 @@
 
 - The Svelte VSCode Extension provides a great a11y linter. E.g. It notifies if I try to apply an on:click event on a span. It must be a keyboard event too.
 
+- If you accidentally declare a component prop with `const`, it is hard to debug why the component is not changing. There is no proper error message is shown in this case.
+
 ### Language features
 
 - Component events look clean and handy, especially with event forwarding. On the other hand with large components it is a little bit hard to follow which events are forwarded.
