@@ -1,6 +1,5 @@
 import { useState } from "react"
 import type { Todo, UpdateTodo } from "../todo-api"
-import VerticalBox from "./VerticalBox"
 import EditTodoItem from "./EditTodoItem"
 import DisplayTodoItem from "./DisplayTodoItem"
 
@@ -22,7 +21,7 @@ export default function TodoItem({
   }
 
   return (
-    <VerticalBox>
+    <li className="flex gap-3 text-lg max-w-sm">
       {editing ? (
         <EditTodoItem 
           todo={todo}
@@ -37,6 +36,6 @@ export default function TodoItem({
           onUpdate={onUpdate}
         />
       )}
-    </VerticalBox>
+    </li>
   )
 }

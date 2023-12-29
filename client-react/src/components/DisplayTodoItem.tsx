@@ -15,28 +15,29 @@ export default function DisplayTodoItem({
   onEdit,
   onDelete
 }: DisplayTodoItemProps) {
+  const doneClass = "line-through text-base-300"
+
   return (
-    <div className="flex items-center gap-3 h-12 w-80">
+    <div className="flex flex-1 w-full h-12 gap-3 items-center">
     <input
       type="checkbox"
-      className="toggle"
+      className="checkbox"
       checked={todo.done}
       onChange={() => onUpdate({done: !todo.done})}
     />
-    <h4 
-      className={`m-0 grow truncate ${todo.done ? 'text-neutral-content line-through': ''}`} 
-      title={todo.title}
+    <button 
+      className={`truncate flex-1 text-left ${todo.done ? doneClass: ''}`} 
+      title={`Click to edit - ${todo.title}`}
       onClick={onEdit}
     >
       {todo.title}
-    </h4>
-    <span 
-      className="cursor-pointer"
+    </button>
+    <button 
       title="Delete todo"
       onClick={() => onDelete()}
     >
       <DeleteIcon />
-    </span>
+    </button>
   </div>
 
   ) 

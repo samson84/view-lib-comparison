@@ -8,7 +8,7 @@ type EditTodoItemProps = {
   onSave: (updates: UpdateTodo) => void
   onCancel: () => void
 }
-export default function EditTodoItem ({
+export default function EditTodoItem({
   todo,
   onSave,
   onCancel
@@ -32,27 +32,24 @@ export default function EditTodoItem ({
   }
 
   return (
-    <div className="flex items-center gap-3 h-12 w-80">
     <form onSubmit={handleSave}>
       <input
+        className="input input-bordered w-full"
         ref={inputRef}
+        required
         type="text"
         value={title}
         onChange={(event) => setTitle(event.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Todo title"
-        className="input input-bordered  w-full max-w-xs"
       />
+      <button
+        className="cursor-pointer"
+        onClick={onCancel}
+        title="Cancel edit"
+      >
+        <CancelIcon />
+      </button>
     </form>
-    <span
-      className="cursor-pointer"
-      onClick={onCancel}
-      title="Cancel changes"
-    >
-      <CancelIcon />
-    </span>
-  </div>
-
   )
-
 }
