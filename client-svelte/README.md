@@ -32,10 +32,18 @@
 
 - To reduce the boilerplates, Svelte introduce a lot of shorthands, like event forwarding and automatic store subscribtions, unsubscribtions (like `$store`). It feels criptic in some cases and hides important mechanics. 
 
-### Testing
+### Testing with Vitest
 
 - The testing library documentation is outdated for svelte, it recommends to use vitest-dom package, but jest-dom is the proper package, even with vitest.
 
 - Creating basic tests are easy with svelte + vitest + testing-library.
 
 - Testing the events are a little bit boilerplaty, `component.$on(event, mock)` is needed + the svelte's `CustomEvent` has a dynamic properties, so first it is needed to access the event object from the mock calls, after that we can reach the properties, like `event.detail`.
+
+- vitest is running in node and Svelte renders the components in SSR mode in node. Therefore the onMount callbacks were not called in the tests. This open issue discovers a deep rabbit hole with a little bit ugly workaround. https://github.com/vitest-dev/vitest/issues/2834#issuecomment-1439576110
+
+- I tried to set up an integration test with [MSW](https://mswjs.io/). While in the browser the relative URLs are totally fine in node they are invalid. MSW is not prepared for this case, so I had to added a build time env variable for the base URL and apply it to the tests and in the prod code too. Not great, but acceptable. Using more advanced fetchhing libraries, like axios or ky can solve this issue, by setting up base URL in the test cases conditionally.
+
+- Configuring the @testing-library/jest-dom was problematic with typescript, becuase the extended expect's definitions not recognized by typescript if I added it in the vitest's setup file. https://github.com/testing-library/jest-dom/issues/546
+
+- Vitest's documentation is outdated. E.g. the --set-timeout CLI option and the setupFiles config prop is not documented properly. 

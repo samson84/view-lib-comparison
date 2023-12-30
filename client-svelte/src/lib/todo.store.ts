@@ -1,7 +1,8 @@
 import { writable } from "svelte/store";
 import { fetcher } from "./fetcher";
 
-const BASE_URL = '/api/todos'
+const TODO_API_BASE_URL = import.meta.env.VITE_TODO_API_BASE_URL ?? ''
+const BASE_URL = `${TODO_API_BASE_URL}/api/todos`
 
 export type Todo = {
   id: string

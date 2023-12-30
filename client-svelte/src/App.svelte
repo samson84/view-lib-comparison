@@ -9,7 +9,7 @@
   } from "./lib/todo.store.js";
   import TodoList from "./lib/TodoList.svelte";
   import ErrorMessage from "./lib/Error.svelte";
-  import Loading from "./Loading.svelte";
+  import Loading from "./lib/Loading.svelte";
 
   onMount(async () => {
     await todos.readAll();
