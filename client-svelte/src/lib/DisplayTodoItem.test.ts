@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { render, fireEvent, screen } from '@testing-library/svelte'
 

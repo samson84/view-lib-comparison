@@ -14,6 +14,7 @@
     "allowJs": true,
     "checkJs": true,
     "isolatedModules": true,
+    "types": ["@testing-library/jest-dom"]
   },
   "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
   "references": [{ "path": "./tsconfig.node.json" }]
