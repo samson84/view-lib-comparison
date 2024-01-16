@@ -1,1 +1,27 @@
-<h1 class="text-3xl font-bold underline">Hello Angular!</h1>
+<div class="container m-0 sm:m-3 text-lg">
+  @if (loading) {
+  <div class="fixed top-0 right-0">Loading...</div>
+  }
+
+  <main class="flex jusfity-center">
+    <div class="flex flex-col gap-2">
+      <div>
+        <h1 class="text-4xl fond-bold mb-0 mt-2">
+          Todo APP
+        </h1>
+        <h2 class="text-xl text-zinc-500 fond-bold mt-0 mb-2">
+          with Angular
+        </h2>
+      </div>
+      @if (error) {
+        <div>Something went wrong: {{error.message}}</div>
+      }
+      <div>
+        <app-todo-list [todos]="todos" />
+      </div>
+
+
+
+    </div>
+  </main>
+</div>
