@@ -17,7 +17,7 @@
         <div>Something went wrong: {{error.message}}</div>
       }
       <div>
-        <app-todo-list [todos]="todos" />
+        <app-todo-list [todos]="todos" (onCreate)="onCreate($event)" />
       </div>
 
 

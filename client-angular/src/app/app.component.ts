@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { Todo } from './todo.type';
+import { Component, inject } from '@angular/core';
+import { Todo } from '../types/todo.type';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { CreateTodo } from '../types/create-todo.type';
+import { TodoService } from '../services/todo/todo.service';
 
 @Component({
   selector: 'app-root',
@@ -13,16 +15,23 @@ export class AppComponent {
   title = 'app';
   loading = false;
   error: Error | null = null;
-  todos: Todo[] = [
-    {
-      id: '123',
-      title: 'Example',
-      done: false
-    },
-    {
-      id: '456',
-      title: 'Example 2',
-      done: true
-    },
-  ]
+  todos: Todo[] = []
+  todoService = inject(TodoService)
+
+  constructor() {
+    this.loading = true
+    this.todoService.getAll().subscribe({
+      next: (todos) => { this.todos = todos },
+      error: (error) => { this.error = error },
+      complete: () => { this.loading = false }
+    })
+  }
+
+  onCreate(todo: CreateTodo) {
+    this.todoService.post(todo).subscribe({
+      next: (updated) => { this.todos.push(updated) },
+      error: (error) => { this.error = error },
+      complete: () => { this.loading = false }
+    })
+  }
 }

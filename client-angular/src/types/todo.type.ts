@@ -3,5 +3,3 @@ export type Todo = {
   done: boolean
   title: string
 }
-
-export type CreateTodo = Partial<Omit<Todo, 'id'>>

@@ -46,6 +46,8 @@
 
 - It is easy to mess up the code with the directives, especially the structural directives. Importing a directive to a module adds some implicit functionalities to the components, they are sometimes documented poorly and the official API documentation is hard to read.
 
+- The HTTP module with rxJS observables provides a nice and easy way to change the component props according to the HTTP response. Handy error handling, types built in.
+
 ## Bottom line
 
 - Angular is a complex system with a lot of built-in functionality and requires a lot of boilerplate code. Angular handles its complexity by tooling (`ng generate`). 

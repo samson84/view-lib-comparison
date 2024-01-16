@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Todo } from '../todo.type';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import type { CreateTodo } from '../todo.type';
+import { Todo } from '../../types/todo.type';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import type { CreateTodo } from '../../types/create-todo.type';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,12 +14,18 @@ export class TodoListComponent {
   @Input() todos: Todo[] = []
   @Output() onCreate = new EventEmitter<CreateTodo>()
   createForm = new FormGroup({
-    title: new FormControl('', {nonNullable: true})
+    title: new FormControl<string>('', {
+      validators: [Validators.required],
+      nonNullable: true
+    })
   })
 
   onSubmit(event: Event) {
     event.preventDefault()
-    this.onCreate.emit(this.createForm.value)
+    this.onCreate.emit({
+      title: this.createForm.value.title!,
+      done: false 
+    })
     this.createForm.reset()
   }
 
