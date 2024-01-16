@@ -21,7 +21,7 @@
   </form>
   <ul>
   @for (todo of todos; track todo.id) {
-    <li>{{todo.title}}</li>
+    <app-todo-item [todo]="todo" />
   }
 </ul>
 </div>

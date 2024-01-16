@@ -1,0 +1,7 @@
+<li class="flex gap-3 text-lg max-w-sm">
+  @if (editing) {
+    <app-edit-todo-item />
+  } @else {
+    <app-display-todo-item [todo]="todo" />
+  }
+</li>

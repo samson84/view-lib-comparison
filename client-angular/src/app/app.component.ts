@@ -28,6 +28,7 @@ export class AppComponent {
   }
 
   onCreate(todo: CreateTodo) {
+    this.loading = true
     this.todoService.post(todo).subscribe({
       next: (updated) => { this.todos.push(updated) },
       error: (error) => { this.error = error },

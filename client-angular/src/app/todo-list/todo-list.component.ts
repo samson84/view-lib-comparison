@@ -3,10 +3,12 @@ import { Todo } from '../../types/todo.type';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import type { CreateTodo } from '../../types/create-todo.type';
 
+import { TodoItemComponent } from '../todo-item/todo-item.component';
+
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TodoItemComponent],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
 })
