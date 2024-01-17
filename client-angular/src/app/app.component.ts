@@ -1,7 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Todo } from '../types/todo.type';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { CreateTodo } from '../types/create-todo.type';
+
+import type { CreateTodo } from '../types/create-todo.type';
+import type { UpdateTodoEvent } from '../types/update-todo-event.type';
+import type { TodoId } from '../types/todo-id.type';
+
 import { TodoService } from '../services/todo/todo.service';
 
 @Component({
@@ -20,7 +24,7 @@ export class AppComponent {
 
   constructor() {
     this.loading = true
-    this.todoService.getAll().subscribe({
+    this.todoService.readAll().subscribe({
       next: (todos) => { this.todos = todos },
       error: (error) => { this.error = error },
       complete: () => { this.loading = false }
@@ -29,8 +33,37 @@ export class AppComponent {
 
   onCreate(todo: CreateTodo) {
     this.loading = true
-    this.todoService.post(todo).subscribe({
-      next: (updated) => { this.todos.push(updated) },
+    this.todoService.create(todo).subscribe({
+      next: (created) => { this.todos.push(created) },
+      error: (error) => { this.error = error },
+      complete: () => { this.loading = false }
+    })
+  }
+
+  onUpdate([id, updates]: UpdateTodoEvent) {
+    this.loading = true
+    this.todoService.update(id, updates).subscribe({
+      next: (updated) => {
+        this.todos = this.todos.map(
+          (todo) =>
+            todo.id === updated.id
+              ? updated
+              : todo
+        )
+      },
+      error: (error) => { this.error = error },
+      complete: () => { this.loading = false }
+    })
+  }
+
+  onDelete(id: TodoId) {
+    this.loading = true
+    this.todoService.delete(id).subscribe({
+      next: (deleted) => {
+        this.todos = this.todos.filter(
+          (todo) => todo.id !== deleted.id
+        )
+      },
       error: (error) => { this.error = error },
       complete: () => { this.loading = false }
     })

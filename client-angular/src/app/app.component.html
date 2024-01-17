@@ -14,14 +14,12 @@
         </h2>
       </div>
       @if (error) {
-        <div>Something went wrong: {{error.message}}</div>
+      <div>Something went wrong: {{error.message}}</div>
       }
       <div>
-        <app-todo-list [todos]="todos" (onCreate)="onCreate($event)" />
+        <app-todo-list [todos]="todos" (create)="onCreate($event)" (delete)="onDelete($event)"
+          (update)="onUpdate($event)" />
       </div>
-
-
-
     </div>
   </main>
 </div>

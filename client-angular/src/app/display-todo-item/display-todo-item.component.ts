@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import type { Todo } from '../../types/todo.type';
+import type { UpdateTodoEvent } from '../../types/update-todo-event.type';
+import type { TodoId } from '../../types/todo-id.type';
 
 @Component({
   selector: 'app-display-todo-item',
@@ -9,6 +11,15 @@ import type { Todo } from '../../types/todo.type';
   styleUrl: './display-todo-item.component.css'
 })
 export class DisplayTodoItemComponent {
-  @Input() todo: Todo|null = null;
+  @Input({ required: true }) todo!: Todo;
+  @Output() update = new EventEmitter<UpdateTodoEvent>()
+  @Output() delete = new EventEmitter<TodoId>() 
 
+  onToggle() {
+    this.update.emit([this.todo.id, {done: !this.todo.done}])
+  }
+
+  onDelete() {
+    this.delete.emit(this.todo.id)
+  }
 }

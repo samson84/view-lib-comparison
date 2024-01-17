@@ -1,1 +1,7 @@
-<p>{{todo?.title}}</p>
+<div class="flex flex-1 w-full h-12 gap-3 items-center">
+  <input #doneCheckbox type="checkbox" class="checkbox" [checked]="todo.done" (change)="onToggle()">
+  {{todo.title}}
+  <button (click)="onDelete()">
+    Delete
+  </button>
+</div>
