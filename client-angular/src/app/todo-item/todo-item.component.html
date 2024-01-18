@@ -1,6 +1,6 @@
 <li class="flex gap-3 text-lg max-w-sm">
   @if (editing) {
-  <app-edit-todo-item />
+  <app-edit-todo-item [todo]="todo" (cancel)="onCancelEdit()" (update)="onUpdate($event)"/>
   } @else {
   <app-display-todo-item [todo]="todo" (update)="onUpdate($event)" (delete)="onDelete($event)" (edit)="onEdit()" />
   }

@@ -1,1 +1,6 @@
-<p>edit-todo-item works!</p>
+<form class="flex gap-3 flex-1" [formGroup]="updateForm" (ngSubmit)="onSubmit($event)">
+  <input type="text" required formControlName="title" class="input input-bordered w-full" />
+  <button type="button" title="Cancel edit" (click)="onCancel()">
+    <img src="/assets/cancel.icon.svg" alt="Cancel Icon" />
+  </button>
+</form>

@@ -17,12 +17,17 @@ export class TodoItemComponent {
   @Input({ required: true }) todo!: Todo;
   @Output() update = new EventEmitter<UpdateTodoEvent>()
   @Output() delete = new EventEmitter<string>()
-
+  
   editing = false;
-
-  onUpdate(event: UpdateTodoEvent) { this.update.emit(event) }
-
+  
+  onUpdate(event: UpdateTodoEvent) { 
+    this.update.emit(event)
+    this.editing = false; 
+  }
+  
   onDelete(id: TodoId) { this.delete.emit(id) }
-
+  
   onEdit() { this.editing = true }
+
+  onCancelEdit() { this.editing = false }
 }
