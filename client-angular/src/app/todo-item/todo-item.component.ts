@@ -11,7 +11,6 @@ import type { TodoId } from '../../types/todo-id.type';
   standalone: true,
   imports: [EditTodoItemComponent, DisplayTodoItemComponent],
   templateUrl: './todo-item.component.html',
-  styleUrl: './todo-item.component.css'
 })
 export class TodoItemComponent {
   @Input({ required: true }) todo!: Todo;

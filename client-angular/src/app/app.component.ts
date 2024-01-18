@@ -15,7 +15,6 @@ import { TodoService } from '../services/todo/todo.service';
   standalone: true,
   imports: [TodoListComponent, ErrorComponent, LoadingComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'app';

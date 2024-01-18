@@ -8,7 +8,6 @@ import type { TodoId } from '../../types/todo-id.type';
   standalone: true,
   imports: [],
   templateUrl: './display-todo-item.component.html',
-  styleUrl: './display-todo-item.component.css'
 })
 export class DisplayTodoItemComponent {
   @Input({ required: true }) todo!: Todo;

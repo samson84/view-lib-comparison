@@ -8,7 +8,6 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './edit-todo-item.component.html',
-  styleUrl: './edit-todo-item.component.css'
 })
 export class EditTodoItemComponent {
   @Input({required: true}) todo!: Todo;
