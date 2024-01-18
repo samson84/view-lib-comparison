@@ -1,6 +1,6 @@
 <div class="container m-0 sm:m-3 text-lg">
   @if (loading && !error) {
-  <div class="fixed top-0 right-0">Loading...</div>
+  <div class="fixed top-0 right-0"><app-loading /></div>
   }
 
   <main class="flex jusfity-center">
@@ -14,7 +14,7 @@
         </h2>
       </div>
       @if (error) {
-        <app-error [message]="error.message"/>
+      <app-error [message]="error.message" />
       }
       <div>
         <app-todo-list [todos]="todos" (create)="onCreate($event)" (delete)="onDelete($event)"

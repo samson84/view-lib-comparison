@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Todo } from '../types/todo.type';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { ErrorComponent } from './error/error.component';
+import { LoadingComponent } from './loading/loading.component';
 
 import type { CreateTodo } from '../types/create-todo.type';
 import type { UpdateTodoEvent } from '../types/update-todo-event.type';
@@ -12,7 +13,7 @@ import { TodoService } from '../services/todo/todo.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TodoListComponent, ErrorComponent],
+  imports: [TodoListComponent, ErrorComponent, LoadingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
