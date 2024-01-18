@@ -1,5 +1,5 @@
 <div class="container m-0 sm:m-3 text-lg">
-  @if (loading) {
+  @if (loading && !error) {
   <div class="fixed top-0 right-0">Loading...</div>
   }
 
@@ -14,7 +14,7 @@
         </h2>
       </div>
       @if (error) {
-      <div>Something went wrong: {{error.message}}</div>
+        <app-error [message]="error.message"/>
       }
       <div>
         <app-todo-list [todos]="todos" (create)="onCreate($event)" (delete)="onDelete($event)"

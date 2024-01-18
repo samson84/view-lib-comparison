@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Todo } from '../types/todo.type';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { ErrorComponent } from './error/error.component';
 
 import type { CreateTodo } from '../types/create-todo.type';
 import type { UpdateTodoEvent } from '../types/update-todo-event.type';
@@ -11,7 +12,7 @@ import { TodoService } from '../services/todo/todo.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TodoListComponent],
+  imports: [TodoListComponent, ErrorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -31,8 +32,13 @@ export class AppComponent {
     })
   }
 
-  onCreate(todo: CreateTodo) {
+  resetBeforeRequest() {
     this.loading = true
+    this.error = null
+  }
+
+  onCreate(todo: CreateTodo) {
+    this.resetBeforeRequest()
     this.todoService.create(todo).subscribe({
       next: (created) => { this.todos.push(created) },
       error: (error) => { this.error = error },
@@ -41,7 +47,7 @@ export class AppComponent {
   }
 
   onUpdate([id, updates]: UpdateTodoEvent) {
-    this.loading = true
+    this.resetBeforeRequest()
     this.todoService.update(id, updates).subscribe({
       next: (updated) => {
         this.todos = this.todos.map(
@@ -57,7 +63,7 @@ export class AppComponent {
   }
 
   onDelete(id: TodoId) {
-    this.loading = true
+    this.resetBeforeRequest()
     this.todoService.delete(id).subscribe({
       next: (deleted) => {
         this.todos = this.todos.filter(
