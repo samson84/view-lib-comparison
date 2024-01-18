@@ -2,6 +2,6 @@
   @if (editing) {
   <app-edit-todo-item />
   } @else {
-  <app-display-todo-item [todo]="todo" (update)="onUpdate($event)" (delete)="onDelete($event)" />
+  <app-display-todo-item [todo]="todo" (update)="onUpdate($event)" (delete)="onDelete($event)" (edit)="onEdit()" />
   }
 </li>

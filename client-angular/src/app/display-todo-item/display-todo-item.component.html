@@ -1,7 +1,10 @@
 <div class="flex flex-1 w-full h-12 gap-3 items-center">
   <input #doneCheckbox type="checkbox" class="checkbox" [checked]="todo.done" (change)="onToggle()">
-  {{todo.title}}
+  <button (click)="onEdit()" class="truncate flex-1 text-left" [class.line-through]="todo.done"
+    [class.text-base-300]="todo.done" title="Click to edit - {{ todo.title }}">
+    {{todo.title}}
+  </button>
   <button (click)="onDelete()">
-    Delete
+    <img src="/assets/delete.icon.svg" alt="Delete icon" />
   </button>
 </div>

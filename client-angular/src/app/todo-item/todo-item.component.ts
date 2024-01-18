@@ -23,4 +23,6 @@ export class TodoItemComponent {
   onUpdate(event: UpdateTodoEvent) { this.update.emit(event) }
 
   onDelete(id: TodoId) { this.delete.emit(id) }
+
+  onEdit() { this.editing = true }
 }

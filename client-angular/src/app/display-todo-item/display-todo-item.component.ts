@@ -14,6 +14,7 @@ export class DisplayTodoItemComponent {
   @Input({ required: true }) todo!: Todo;
   @Output() update = new EventEmitter<UpdateTodoEvent>()
   @Output() delete = new EventEmitter<TodoId>() 
+  @Output() edit = new EventEmitter<undefined>()
 
   onToggle() {
     this.update.emit([this.todo.id, {done: !this.todo.done}])
@@ -21,5 +22,9 @@ export class DisplayTodoItemComponent {
 
   onDelete() {
     this.delete.emit(this.todo.id)
+  }
+
+  onEdit() {
+    this.edit.emit()
   }
 }
