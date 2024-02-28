@@ -8,11 +8,11 @@
 
 - The jump into coding approach looks handy. It is easy to try out the basic features of Angular and get familiar with the syntax.
 
-- It is sad, that the complex tutorial can be started in a browser, but the latter features are not implemented in them.
+- It is sad, that the complex tutorial can be started in a browser, but the latter features are not implemented in it.
 
 - https://angular.dev misses how to install and start an Angular application. It is only described in https://angular.io. (The tutorial covers this step, but if I want to start quickly an Angular application, I get stuck the first time).
 
-- The documentation looks comprehensive, especially on https://angular.io. The API documentation is obfuscated on https://angular.dev. I especially miss the examples.
+- The documentation looks comprehensive, especially on https://angular.io. The API documentation is obfuscated on https://angular.dev. I  missed the examples.
 
 - The Proxy config is outdated on anglar.io and does not exist on angular.dev.
 
@@ -29,6 +29,16 @@
 - I got nice type-checking in the templates with the Angular Language Server VSCode extension.
 
 - The Tailwind install was seamless.
+
+## Testing
+
+- Angular's default testing library is Karma. I wanted to use the Testing Library for Angular with jest-dom, so first I needed to reconfigure the default project to Jest.
+
+- The Angular docs did not give me any advice on the migration, I found it in the Jest documentation. It also refers to 3rd party 
+unofficial preset from 2019. https://www.xfive.co/blog/testing-angular-faster-jest/.
+
+- The native async-await is not supported because of zone.js even with this configuration.
+
 
 ### Framework language
 
@@ -48,10 +58,13 @@
 
 - The HTTP module with rxJS observables provides a nice and easy way to change the component props according to the HTTP response. Handy error handling, types built in.
 
+- The Angular's component update logic is hard to follow. It uses zone.js. This script is monkey-patch the JS built-in features like
+setTimeout. It uses complex logic to find which components need an update. The developer can manually fine-tune this logic with an obfuscated method at first look (NgZone, OnPush). Signals look like a solution for this, but it is in the developer preview.
+
 ## Bottom line
 
 - Angular is a complex system with a lot of built-in functionality and requires a lot of boilerplate code. Angular handles its complexity by tooling (`ng generate`). 
 
 - For me, it is more favorable when a framework tries to create simple concepts and lets the developer decide about the structure, component size and architecture.
 
-- Managing the component size and complexity, and extracting logic to child components is better for me than separating the component into multiple files and approaching the readability this way.
+- Managing the component size and complexity, and extracting logic to child components is better for me than separating the component into multiple files and approaching the readability.
