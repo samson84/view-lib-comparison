@@ -14,7 +14,7 @@
 
 - The documentation looks comprehensive, especially on https://angular.io. The API documentation is obfuscated on https://angular.dev. I  missed the examples.
 
-- The Proxy config is outdated on anglar.io and does not exist on angular.dev.
+- The Proxy config is outdated on anglar.io and does not exist on https://angular.dev.
 
 ### Tooling
 
@@ -48,7 +48,7 @@ unofficial preset from 2019. https://www.xfive.co/blog/testing-angular-faster-je
 - I also run into troubles with integration tests on how to provide the HTTP client to the component. For me Angular's DI system is 
 not clear in every detail, so I try to find some usage examples. It was figured out that it is enough to use the testing library's render option's `imports` param instead of `componentProviders`.
 
-- I had to resolve the same issue in Sevlte here with the HTTP base URL. The browser adds the current URL scheme and domain to the fetch's URL but this behavior does not exist in Node/Jest/JSDOM. So I used a configuration service to set up a base URL and than I mocked it in the tests.
+- I had to resolve the same issue in Sevlte here with the HTTP base URL. The browser adds the current URL scheme and domain to the fetch's URL but this behavior does not exist in Node/Jest/JSDOM. So I used a configuration service to set up a base URL and then I mocked it in the tests.
 
 ### Framework
 
