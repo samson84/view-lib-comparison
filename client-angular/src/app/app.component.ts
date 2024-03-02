@@ -8,7 +8,7 @@ import type { CreateTodo } from '../types/create-todo.type';
 import type { UpdateTodoEvent } from '../types/update-todo-event.type';
 import type { TodoId } from '../types/todo-id.type';
 
-import { TodoService } from '../services/todo/todo.service';
+import { TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-root',

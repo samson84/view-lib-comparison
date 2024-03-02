@@ -37,10 +37,20 @@
 - The Angular docs did not give me any advice on the migration, I found it in the Jest documentation. It also refers to 3rd party 
 unofficial preset from 2019. https://www.xfive.co/blog/testing-angular-faster-jest/.
 
-- The native async-await is not supported because of zone.js even with this configuration.
+- Jest and testing library configuration was relatively seamless.
 
+- First, it looked difficult to use async-await syntax according to the documentation, but was worked perfectly with the Jest + testing library. 
 
-### Framework language
+- It was really easy to mock the standalone components inputs and outputs with the testing library. The final test code was readable and easy to understand.
+
+- I tried to create integration tests with [MSW](https://mswjs.io/) integration. It was a little bit sucks in Jest because Jest does not enable node.js in the test environment, but MSW uses the Node.js's builtins. The error messages were not trivial, I created [a polyfill setup script](https://mswjs.io/docs/migrations/1.x-to-2.x#requestresponsetextencoder-is-not-defined-jest) to solve the issue.  I had to resolve another issue related to the [JSDOM's enforced browser export condition issue](https://mswjs.io/docs/migrations/1.x-to-2.x#cannot-find-module-mswnode-jsdom). 
+
+- I also run into troubles with integration tests on how to provide the HTTP client to the component. For me Angular's DI system is 
+not clear in every detail, so I try to find some usage examples. It was figured out that it is enough to use the testing library's render option's `imports` param instead of `componentProviders`.
+
+- I had to resolve the same issue in Sevlte here with the HTTP base URL. The browser adds the current URL scheme and domain to the fetch's URL but this behavior does not exist in Node/Jest/JSDOM. So I used a configuration service to set up a base URL and than I mocked it in the tests.
+
+### Framework
 
 - The structural directives like ngIf, ngFor etc look the pain in the ass from a readability point of view. The template built-in control flow blocks a much nicer alternative. Unfortunately, they are in development preview still.
 
