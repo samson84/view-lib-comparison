@@ -35,6 +35,17 @@ I document the experience with the framework according to the following aspects.
 - Framework features: impressions, and feelings about the logic, structure, building blocks, readability, and verbosity. Solutions for component properties, events, data handling etc. Hard to debug issues.
 - Testing: how easy to set up the test framework for simpler and complex tests. Test writing patterns, readability, and verbosity. Hard to debug issues.
 
+## Covered frameworks
+
+- [x] React (partially)
+- [x] Svelte
+- [x] Angular
+- [ ] Solid.js
+- [ ] Vue.js
+- [ ] Qwik
+- [ ] Lit 
+- [ ] Vanilla with web components
+
 ## Ideas to improve the feature set
 
 - Client-side routing with route parameters and programmatic navigation
@@ -46,5 +57,13 @@ I document the experience with the framework according to the following aspects.
 - i18n
 - Dark mode
 
+## Ideas for frameworks
 
-
+- [ ] xhtml
+- [ ] Vanilla with native DOM manipulation.
+- [ ] Ember
+- [ ] Preact
+- [ ] Backbone.js
+- [ ] JQuery
+- [ ] Knockout 
+- [ ] Alpine.js
