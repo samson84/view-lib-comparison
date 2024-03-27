@@ -29,6 +29,9 @@
 
 ### Tooling
 
+- SolidJS dev tool exists for Chrome/Chromium and looks promising. It needs some work to make it work, even it is needed to import into
+the entry point of the application. Unfortunately, it is under development.  
+
 ### Framework Features
 
 - The `mergeProps()` and `splitProps()` utilities are strange at first. On the component's props is not ok to use some built-in JS features like `Object.assign()`, rest and spread operators.
