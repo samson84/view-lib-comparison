@@ -30,7 +30,8 @@
 ### Tooling
 
 - SolidJS dev tool exists for Chrome/Chromium and looks promising. It needs some work to make it work, even it is needed to import into
-the entry point of the application. Unfortunately, it is under development.  
+the entry point of the application. Unfortunately, it is under development.
+- 
 
 ### Framework Features
 
